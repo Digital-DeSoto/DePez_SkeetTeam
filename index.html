@@ -1,81 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skeet Shooting Team Registration</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-
-        form {
-            max-width: 400px;
-            margin: auto;
-        }
-
-        input,
-        button {
-            width: 100%;
-            margin: 5px 0;
-            padding: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <h2>Register Your Skeet Shooting Team</h2>
-    <form id="registrationForm">
-        <input type="text" id="teamName" placeholder="Team Name" required>
-        <input type="text" id="captainName" placeholder="Captain's Name" required>
-        <input type="email" id="captainEmail" placeholder="Captain's Email" required>
-        <input type="tel" id="captainPhone" placeholder="Captain's Phone" required>
-        <input type="text" id="member1" placeholder="Member 1 (optional)">
-        <input type="text" id="member2" placeholder="Member 2 (optional)">
-        <input type="text" id="member3" placeholder="Member 3 (optional)">
-        <input type="text" id="sponser" placeholder="sponser (optional)">
-        <button type="submit">Register</button>
-    </form>
+    <div class="container">
+        <h1>Skeet Shooting Team Registration</h1>
+        <p>Register your team for the upcoming competition!</p>
 
-    <p id="status"></p>
+        <form id="registrationForm">
+            <label for="teamName">Team Name:</label>
+            <input type="text" id="teamName" required>
 
-    <script>
-        document.getElementById("registrationForm").addEventListener("submit", function (event) {
-            event.preventDefault();
+            <label for="captainName">Captain's Name:</label>
+            <input type="text" id="captainName" required>
 
-            var formData = {
-                teamName: document.getElementById("teamName").value,
-                captainName: document.getElementById("captainName").value,
-                captainEmail: document.getElementById("captainEmail").value,
-                captainPhone: document.getElementById("captainPhone").value,
-                member1: document.getElementById("member1").value,
-                member2: document.getElementById("member2").value,
-                member3: document.getElementById("member3").value,
-                sponser: document.getElementById("sponser").value
+            <label for="captainEmail">Captain's Email:</label>
+            <input type="email" id="captainEmail" required>
 
-            };
+            <label for="captainPhone">Captain's Phone:</label>
+            <input type="tel" id="captainPhone" required>
 
-            console.log("Submitting form data:", formData);  // Debug log
+            <label for="member1">Team Member 1:</label>
+            <input type="text" id="member1">
 
-            fetch("https://script.google.com/macros/s/AKfycbyBd3pbEbq1Ww7oWzAnzNe-uc6Djpiuk-NMJt00_p672_9Der8lPOtKZB11xPTnIpho/exec", {
-                method: "POST",
-                body: JSON.stringify(formData),
-                headers: { "Content-Type": "application/json" },
-                mode: "no-cors"  // Bypass CORS restrictions
-            })
-                .then(response => {
-                    console.log("Response received:", response);
-                    document.getElementById("status").innerText = "Registration successful!";
-                    document.getElementById("registrationForm").reset();
-                })
-                .catch(error => {
-                    console.error("Error submitting form:", error);
-                    document.getElementById("status").innerText = "Error submitting form.";
-                });
-        });
-    </script>
+            <label for="member2">Team Member 2:</label>
+            <input type="text" id="member2">
+
+            <label for="member3">Team Member 3:</label>
+            <input type="text" id="member3">
+
+            <button type="submit">Register Team</button>
+            <p id="status"></p>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
 </body>
-
 </html>

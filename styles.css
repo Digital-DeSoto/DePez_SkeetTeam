@@ -1,0 +1,53 @@
+/* Background Image */
+body {
+    background-image: url('background.jpg'); /* Replace with actual image */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Form Container */
+.container {
+    background: rgba(0, 0, 0, 0.7);
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    margin: 50px auto;
+    border-radius: 10px;
+}
+
+/* Form Inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Submit Button */
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #218838;
+}
+
+/* Status Message */
+#status {
+    margin-top: 10px;
+    font-weight: bold;
+}
