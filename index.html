@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skeet Shooting Team Registration</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        form { max-width: 400px; margin: auto; }
-        input, button { width: 100%; margin: 5px 0; padding: 10px; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        input,
+        button {
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+        }
     </style>
 </head>
+
 <body>
     <h2>Register Your Skeet Shooting Team</h2>
     <form id="registrationForm">
@@ -26,37 +41,38 @@
     <p id="status"></p>
 
     <script>
-       document.getElementById("registrationForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+        document.getElementById("registrationForm").addEventListener("submit", function (event) {
+            event.preventDefault();
 
-    var formData = {
-        teamName: document.getElementById("teamName").value,
-        captainName: document.getElementById("captainName").value,
-        captainEmail: document.getElementById("captainEmail").value,
-        captainPhone: document.getElementById("captainPhone").value,
-        member1: document.getElementById("member1").value,
-        member2: document.getElementById("member2").value,
-        member3: document.getElementById("member3").value
-    };
+            var formData = {
+                teamName: document.getElementById("teamName").value,
+                captainName: document.getElementById("captainName").value,
+                captainEmail: document.getElementById("captainEmail").value,
+                captainPhone: document.getElementById("captainPhone").value,
+                member1: document.getElementById("member1").value,
+                member2: document.getElementById("member2").value,
+                member3: document.getElementById("member3").value
+            };
 
-    console.log("Submitting form data:", formData);  // Debug log
+            console.log("Submitting form data:", formData);  // Debug log
 
-    fetch("https://script.google.com/macros/s/AKfycbyBd3pbEbq1Ww7oWzAnzNe-uc6Djpiuk-NMJt00_p672_9Der8lPOtKZB11xPTnIpho/exec", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" }
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log("Response from Google Apps Script:", data);  // Debug log
-        document.getElementById("status").innerText = "Registration successful!";
-        document.getElementById("registrationForm").reset();
-    })
-    .catch(error => {
-        console.error("Error submitting form:", error);  // Debug log
-        document.getElementById("status").innerText = "Error submitting form.";
-    });
-});
+            fetch("https://script.google.com/macros/s/AKfycbyBd3pbEbq1Ww7oWzAnzNe-uc6Djpiuk-NMJt00_p672_9Der8lPOtKZB11xPTnIpho/exec", {
+                method: "POST",
+                body: JSON.stringify(formData),
+                headers: { "Content-Type": "application/json" },
+                mode: "no-cors"  // Bypass CORS restrictions
+            })
+                .then(response => {
+                    console.log("Response received:", response);
+                    document.getElementById("status").innerText = "Registration successful!";
+                    document.getElementById("registrationForm").reset();
+                })
+                .catch(error => {
+                    console.error("Error submitting form:", error);
+                    document.getElementById("status").innerText = "Error submitting form.";
+                });
+        });
     </script>
 </body>
+
 </html>
